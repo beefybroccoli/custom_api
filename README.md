@@ -9,5 +9,7 @@
     _added users-router.js, users-model.js
 
 ### milestone 3
+    _added 'dotenv' to index.js
+    _created .env file with PORT=9000 
 
 
