@@ -1,4 +1,3 @@
-const pg = require("pg");
 const knex = require("knex");
 const configs = require("./knexfile");
 

@@ -7,7 +7,7 @@
     "migrate": "cd database && knex migrate:latest",
     "rollback": "cd database && knex migrate:rollback",
     "seed": "cd database && knex seed:run",
-    "resetdb": "npm run rollback && npm run migrate && npm run seed",
+    "resetdb": "cd database && knex migrate:rollback && knex migrate:latest && knex seed:run",
     "push": "git add . && git commit -m '...' && git push origin main",
     "push7": "git add . && git commit -m '...' && git push origin milestone-07",
     "jest": "jest --watch",
