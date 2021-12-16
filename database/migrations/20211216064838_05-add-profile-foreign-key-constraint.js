@@ -6,7 +6,10 @@ exports.up = function(knex, Promise) {
       })
   };
   
-  exports.down = function(knex) {
-    return null;
+  exports.down = function(knex, Promise) {
+    return knex.schema 
+        .alterTable("profiles", table=>{
+            table.dropForeign('user_id');
+        })
   };
   

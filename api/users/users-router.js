@@ -25,9 +25,9 @@ router.get("/:id", verify_user_id, (req, res, next)=>{
 router.post("/", verify_new_user, async (req, res, next)=>{
   try{
     const {username, password} = req.body;
-    const new_id = await modelUsers.addUser({username, password});
-    const array = await modelUsers.getById(new_id[0]);
-    res.status(201).json({result: 1, createdUser:array[0]});
+    const result = await modelUsers.addUser({username, password});
+    const newUser = await modelUsers.getBy({username});
+    res.status(201).json({result: result.rowCount, createdUser:newUser});
   }catch(err){
     next(err);
   }
@@ -39,7 +39,8 @@ router.put("/:id", verify_user_id, verify_new_user, async (req, res, next)=>{
     const {id} = req.params;
     const result = await modelUsers.modifyUser(id, {username, password});
     const modifiedUser = await modelUsers.getById(id);
-    res.status(201).json({result, modifiedUser:modifiedUser[0]});
+    // res.status(201).json({result, modifiedUser:modifiedUser[0]});
+    res.status(201).json({result:1, modifiedUser});
   }catch(err){
     next(err);
   }

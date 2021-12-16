@@ -3,10 +3,10 @@ const app = require("./server.js");
 const db = require("../database/db-config");
 
 beforeAll(async () => {
-  //migrate down 6 times
-  for (let i = 1 ; i <= 6; i++){
-    await db.migrate.down()
-  }
+  // //migrate down 6 times
+  // for (let i = 1 ; i <= 6; i++){
+  //   await db.migrate.down()
+  // }
   //migrate up 4 times
   for (let i = 1; i <= 4; i++){
     await db.migrate.up();
@@ -20,11 +20,29 @@ beforeAll(async () => {
 })
 
 beforeEach(async () => {
+  // //migrate up 4 times
+  // for (let i = 1; i <= 4; i++){
+  //   await db.migrate.up();
+  // }
+  // //migrate sedd:run
+  // await db.seed.run();
+  // //migrate up 2 times
+  // for(let i = 1 ; i <= 2; i++){
+  //   // await db.migrate.up();
+  // }
+})
+
+afterEach(async ()=>{
   
 })
 
 afterAll(async () => {
-  await db.destroy()
+  // await db.destroy()
+  //migrate down 6 times
+  for (let i = 1 ; i <= 6; i++){
+    await db.migrate.down()
+  }
+  
 })
 
 describe('server test GET /', function () {

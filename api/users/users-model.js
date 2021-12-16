@@ -8,7 +8,12 @@ async function getById(id){
     return await db('users').where('id', id);
 }
 
+async function getBy(filter){
+    return await db('users').where(filter);
+}
+
 async function addUser(user){
+    console.log("user = ", user);
     return await db('users').insert(user);
 }
 
@@ -20,4 +25,4 @@ async function deleteUser(id){
     return await db('users').where('id', id).del();
 }
 
-module.exports = {getAll, getById, addUser,modifyUser,deleteUser};
+module.exports = {getAll, getById, addUser,modifyUser,deleteUser, getBy};

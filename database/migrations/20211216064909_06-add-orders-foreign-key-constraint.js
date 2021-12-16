@@ -6,6 +6,9 @@ exports.up = function(knex, Promise) {
         })
 };
 
-exports.down = function(knex) {
-  return null;
+exports.down = function(knex, promise) {
+    return knex.schema 
+    .alterTable("orders", table=>{
+        table.dropForeign('user_id');
+    })
 };
