@@ -4,12 +4,15 @@ const routerProfiles = require("./profiles/profiles-router");
 const routerProducts = require("./products/products-router");
 const routerOrders = require("./orders/orders-router");
 const {errorHandler} = require("./errorhandler");
+const db = require("../database/db-config");
 
 const server = express();
 server.use(express.json());
 
-server.get("/", (req, res)=>{
-    res.status(200).json({message:"Hello World from server"});
+server.get("/", async (req, res)=>{
+    const test = await db('test');
+    res.status(200).json(test);
+    // res.status(200).json({message:"Hello World from server"});
 })
 
 server.use("/api/users", routerUsers);

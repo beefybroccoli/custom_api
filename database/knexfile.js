@@ -12,7 +12,7 @@ const sharedConfig = {
     directory: './database/migrations'
   },
   seeds: {
-    directory: './database/seeds'
+    directory: './seeds'
   },
 }
 
@@ -20,7 +20,14 @@ module.exports = {
 
   development: {
     ...sharedConfig,
-    connection: process.env.DEV_DATABASE_URL,
+    // connection: process.env.DEV_DATABASE_URL,
+    connection: {
+      host : '127.0.0.1',
+      port : 5432,
+      user : 'postgres',
+      password : 'P@$$w0rd',
+      database : 'custom_api'
+    }
   },
 
   testing: {

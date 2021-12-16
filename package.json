@@ -4,9 +4,9 @@
   "scripts": {
     "server": "nodemon index.js",
     "start": "node index.js",
-    "migrate": "knex migrate:latest",
+    "migrate": "cd database && knex migrate:latest",
     "rollback": "knex migrate:rollback",
-    "seed": "knex seed:run",
+    "seed": "cd database && knex seed:run",
     "resetdb": "npm run rollback && npm run migrate && npm run seed",
     "push": "git add . && git commit -m '...' && git push origin main",
     "push7": "git add . && git commit -m '...' && git push origin milestone-07",
