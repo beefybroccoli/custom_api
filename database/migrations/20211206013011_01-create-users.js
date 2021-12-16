@@ -2,7 +2,7 @@
 exports.up = function(knex, Promise) {
   return knex.schema 
     .createTable("users", table=>{
-        table.increments("id");
+        table.uuid("id").primary().defaultTo(knex.raw("gen_random_uuid()"));
         table.string("username").notNull().unique();
         table.string("password").notNull();
     })

@@ -13,6 +13,10 @@ async function getBy(filter){
 }
 
 async function addUser(user){
+    const {username, password} = user;
+    // const id = await db.select("nextval('users_id_seq')");
+    // console.log("id = ", id);
+    // return await db('users').insert({...user, id:id});
     return await db('users').insert({...user});
 }
 
