@@ -1,8 +1,7 @@
 exports.seed = function(knex) {
   return knex('profiles')
-    // .truncate()
+    .truncate()
     .then(function () {
-      // Inserts seed entries
       return knex('profiles').insert([
         {id: 1, first_name:"tom", last_name:"tom", middle_name:"", email:"tomtom@mail.com", user_type:"admin",user_id:1},
         {id: 2, first_name:"hank", last_name:"jimmy", middle_name:"charlie", email:"hankjimy@mail.com", user_type:"user",user_id:2},

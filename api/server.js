@@ -10,9 +10,9 @@ const server = express();
 server.use(express.json());
 
 server.get("/", async (req, res)=>{
-    const test = await db('test');
-    res.status(200).json(test);
-    // res.status(200).json({message:"Hello World from server"});
+    // const test = await db('test');
+    // res.status(200).json(test);
+    res.status(200).json({message:"Hello World from server"});
 })
 
 server.use("/api/users", routerUsers);

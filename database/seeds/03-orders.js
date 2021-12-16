@@ -1,8 +1,7 @@
 exports.seed = function(knex) {
   return knex('orders')
-    // .truncate()
+    .truncate()
     .then(function () {
-      // Inserts seed entries
       return knex('orders').insert([
         {id: 1, order_number:1, product_id:1, quantity:5, status:"pending",user_id:1},
         {id: 2, order_number:1, product_id:2, quantity:5, status:"pending",user_id:2},

@@ -1,8 +1,7 @@
 exports.seed = function(knex) {
   return knex('products')
-    // .truncate()
+    .truncate()
     .then(function () {
-      // Inserts seed entries
       return knex('products').insert([
         {id: 1, name:"color shirt",description:"a very colorful shirt", price:11.99},
         {id: 2, name:"pencil case",description:"a very strong case", price:11.99},

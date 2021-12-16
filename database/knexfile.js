@@ -10,12 +10,6 @@ if (process.env.DATABASE_URL) {
 const sharedConfig = {
   client: 'postgres',
   version: '8.7.1',
-  migration:{
-    directory: './migrations'
-  },
-  seeds: {
-    directory: './seeds'
-  },
 }
 
 module.exports = {
@@ -23,6 +17,12 @@ module.exports = {
   development: {
     ...sharedConfig,
     // connection: process.env.DEV_DATABASE_URL,
+    migrations:{
+      directory: './migrations'
+    },
+    seeds: {
+      directory: './seeds'
+    },
     connection: {
       host : LOCAL_HOST,
       port : POSTGRES_PORT,
@@ -35,6 +35,12 @@ module.exports = {
   testing: {
     ...sharedConfig,
     // connection: process.env.TESTING_DATABASE_URL,
+    migrations:{
+      directory: './database/migrations'
+    },
+    seeds: {
+      directory: './database/seeds'
+    },
     connection: {
       host : LOCAL_HOST,
       port : POSTGRES_PORT,
@@ -47,6 +53,12 @@ module.exports = {
   production: {
     ...sharedConfig,
     //environment variable on cloud
+    migrations:{
+      directory: './database/migrations'
+    },
+    seeds: {
+      directory: './database/seeds'
+    },
     connection: process.env.DATABASE_URL,
     pool: {
       min: 2,
