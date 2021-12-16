@@ -73,9 +73,6 @@ describe('test "/api/users/" endpoint', function () {
 
   describe('POST /', function () {
     test('respond from POST /', async () => {
-      // const result = await modelUsers.addUser({username, password});
-      // const newUser = await modelUsers.getBy({username});
-      // res.status(201).json({result: result.rowCount, createdUser:newUser});
       const res = await request(app).post("/api/users/").send({ username: "tomtom", password: "tomtom" });
       expect(res.body).toMatchObject({
         result: 1,
@@ -88,15 +85,10 @@ describe('test "/api/users/" endpoint', function () {
 
   describe('PUT /:id', function () {
     test('respond from PUT /', async () => {
-      const res = await request(app).post("/api/users/").send({ username: "tomtom", password: "tomtom" });
-      expect(res.body).toMatchObject({
-        result: 1,
-        createdUser: { id: 6, username: 'tomtom', password: 'tomtom' }
-      });
-      const res2 = await request(app).put("/api/users/6").send({ username: "tomtom2", password: "tomtom2" });
+      const res2 = await request(app).put(`/api/users/${usersTable[0].id}`).send({ username: "tomtom2", password: "tomtom2" });
       expect(res2.body).toMatchObject({
         result: 1,
-        modifiedUser: { id: 6, username: 'tomtom2', password: 'tomtom2' }
+        modifiedUser: { id: usersTable[0].id, username: 'tomtom2', password: 'tomtom2' }
       });
       // console.log("res.body = ", res.body);
     })
@@ -104,15 +96,12 @@ describe('test "/api/users/" endpoint', function () {
 
   describe('DELETE /:id', function () {
     test('respond from DELETE /:id', async () => {
-      const res = await request(app).post("/api/users/").send({ username: "tomtom", password: "tomtom" });
-      expect(res.body).toMatchObject({
-        result: 1,
-        createdUser: { id: 6, username: 'tomtom', password: 'tomtom' }
-      });
-      const res2 = await request(app).delete("/api/users/6");
+      const res = await request(app).post("/api/users/").send({ username: "tomtom10", password: "tomtom10" });
+      console.log("res.body = ", res.body);
+      const res2 = await request(app).delete(`/api/users/${res.body.createdUser.id}`);
       expect(res2.body).toMatchObject({
         result: 1,
-        deletedUser: { id: 6, username: 'tomtom', password: 'tomtom' }
+        deletedUser: { id: res.body.createdUser.id, username: 'tomtom10', password: 'tomtom10' }
       });
       // console.log("res2.body = ", res2.body);
     })
