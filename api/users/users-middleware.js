@@ -32,8 +32,9 @@ async function verify_new_user(req, res, next){
 }
 
 async function verify_unique_user(req, res, next){
-    if (false){
-
+    const array = await modelUsers.getBy({'username':req.body.username});
+    if (array.length > 0){
+        res.status(400).json({message: `username ${req.body.username} already taken`});
     }else{
         next();
     }

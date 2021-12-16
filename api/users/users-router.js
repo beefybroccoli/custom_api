@@ -22,7 +22,7 @@ router.get("/:id", verify_user_id, (req, res, next)=>{
   }
 })
 
-router.post("/", verify_new_user, async (req, res, next)=>{
+router.post("/", verify_new_user, verify_unique_user,async (req, res, next)=>{
   try{
     const {username, password} = req.body;
     const result = await modelUsers.addUser({username, password});
