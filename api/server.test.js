@@ -4,6 +4,10 @@ const app = require("./server.js");
 const db = require("../database/db-config");
 
 beforeAll(async () => {
+  
+})
+
+beforeEach(async () => {
   //roll back
   for (let i = 1; i <= 6; i++){
     await db.migrate.down();
@@ -21,9 +25,6 @@ beforeAll(async () => {
   for(let i = 1 ; i <= 2; i++){
     await db.migrate.up();
   }
-})
-
-beforeEach(async () => {
 })
 
 afterEach(async ()=>{
@@ -76,7 +77,7 @@ describe('test "/api/users/" endpoint', function () {
       const res = await request(app).post("/api/users/").send({ username: "tomtom", password: "tomtom" });
       expect(res.body).toMatchObject({
         result: 1,
-        createdUser: { id: 6, username: 'tomtom', password: 'tomtom' }
+        createdUser: {username: 'tomtom', password: 'tomtom' }
       });
       // console.log("res.body = ", res.body);
     })
@@ -96,12 +97,12 @@ describe('test "/api/users/" endpoint', function () {
 
   describe('DELETE /:id', function () {
     test('respond from DELETE /:id', async () => {
-      const res = await request(app).post("/api/users/").send({ username: "tomtom10", password: "tomtom10" });
-      console.log("res.body = ", res.body);
+      const res = await request(app).post("/api/users/").send({ username: "tomtom", password: "tomtom" });
+      // console.log("res.body = ", res.body);
       const res2 = await request(app).delete(`/api/users/${res.body.createdUser.id}`);
       expect(res2.body).toMatchObject({
         result: 1,
-        deletedUser: { id: res.body.createdUser.id, username: 'tomtom10', password: 'tomtom10' }
+        deletedUser: { id: res.body.createdUser.id, username: 'tomtom', password: 'tomtom' }
       });
       // console.log("res2.body = ", res2.body);
     })

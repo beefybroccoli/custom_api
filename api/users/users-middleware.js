@@ -8,8 +8,6 @@ async function verify_user_id(req, res, next){
         res.status(400).json({message:`invalid user id - ${input_id}`});
     }else{
         const array = await modelUsers.getById(input_id);
-        console.log("array = ", array);
-
         if (array.length === 0){
             res.status(404).json({message:`user id ${input_id} not found`});
         }else{
