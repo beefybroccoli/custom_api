@@ -1,14 +1,15 @@
 require("dotenv").config();
 const {USERNAME,PASSWORD,DEV_DATABASE,TESTING_DATABASE, LOCAL_HOST, POSTGRES_PORT} = require("../env");
 
-const pg = require("pg");
+const postgres = require("pg");
 
 if (process.env.DATABASE_URL) {
   pg.defaults.ssl = { rejectUnauthorized: false }
 }
 
 const sharedConfig = {
-  client: 'pg',
+  client: 'postgres',
+  version: '8.7.1',
   migration:{
     directory: './database/migrations'
   },
