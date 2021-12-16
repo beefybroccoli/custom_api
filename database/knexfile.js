@@ -32,7 +32,14 @@ module.exports = {
 
   testing: {
     ...sharedConfig,
-    connection: process.env.TESTING_DATABASE_URL,
+    // connection: process.env.TESTING_DATABASE_URL,
+    connection: {
+      host : '127.0.0.1',
+      port : 5432,
+      user : 'postgres',
+      password : 'P@$$w0rd',
+      database : 'custom_api_test'
+    }
   },
 
   production: {
