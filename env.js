@@ -4,3 +4,5 @@ module.exports = {
     DEV_DATABASE_URL='postgresql://postgres:P@$$w0rd@localhost:5432/custom_api',
     TESTING_DATABASE_URL='postgresql://postgres:P@$$w0rd:localhost:5432/custom_api_test',
 }
+
+//DEV_DATABASE_URL='postgresql://postgres:Loganqwaszx23!@localhost:5432/anywherefitness' 
