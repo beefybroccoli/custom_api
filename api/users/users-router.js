@@ -27,7 +27,7 @@ router.post("/", verify_new_user, async (req, res, next)=>{
     const {username, password} = req.body;
     const result = await modelUsers.addUser({username, password});
     const newUser = await modelUsers.getBy({username});
-    res.status(201).json({result: result.rowCount, createdUser:newUser});
+    res.status(201).json({result: result.rowCount, createdUser:newUser[0]});
   }catch(err){
     next(err);
   }
@@ -40,7 +40,7 @@ router.put("/:id", verify_user_id, verify_new_user, async (req, res, next)=>{
     const result = await modelUsers.modifyUser(id, {username, password});
     const modifiedUser = await modelUsers.getById(id);
     // res.status(201).json({result, modifiedUser:modifiedUser[0]});
-    res.status(201).json({result:1, modifiedUser});
+    res.status(201).json({result:1, modifiedUser:modifiedUser[0]});
   }catch(err){
     next(err);
   }

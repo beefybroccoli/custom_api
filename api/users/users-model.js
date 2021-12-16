@@ -9,16 +9,15 @@ async function getById(id){
 }
 
 async function getBy(filter){
-    return await db('users').where(filter);
+    return await db('users').where({...filter});
 }
 
 async function addUser(user){
-    console.log("user = ", user);
-    return await db('users').insert(user);
+    return await db('users').insert({...user});
 }
 
 async function modifyUser(id, user){
-    return await db('users').update(user).where("id", id);
+    return await db('users').update({...user}).where("id", id);
 }
 
 async function deleteUser(id){
