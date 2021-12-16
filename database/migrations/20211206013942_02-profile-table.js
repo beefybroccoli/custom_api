@@ -1,4 +1,3 @@
-
 exports.up = function(knex, Promise) {
   return knex.schema
     .createTable("profiles", table=>{
@@ -9,7 +8,7 @@ exports.up = function(knex, Promise) {
         table.string("email").notNull();
         table.string("user_type").notNull();
         table.integer("user_id").notNull();
-        table.foreign("user_id").references("id").inTable("users");
+        // table.foreign("user_id").references("id").inTable("users"); //pending delete
     })
 };
 

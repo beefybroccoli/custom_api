@@ -7,7 +7,6 @@ exports.up = function(knex, Promise) {
             table.string("description").notNull();
             table.decimal("price").notNull();
         })
-  
 };
 
 exports.down = function(knex) { 
