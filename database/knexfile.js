@@ -11,7 +11,7 @@ const sharedConfig = {
   client: 'postgres',
   version: '8.7.1',
   migration:{
-    directory: './database/migrations'
+    directory: './migrations'
   },
   seeds: {
     directory: './seeds'

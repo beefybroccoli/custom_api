@@ -10,8 +10,7 @@
     "resetdb": "cd database && knex migrate:rollback && knex migrate:latest && knex seed:run",
     "push": "git add . && git commit -m '...' && git push origin main",
     "push7": "git add . && git commit -m '...' && git push origin milestone-07",
-    "jest": "jest --watch",
-    "testserver": "cross-env NODE_ENV=testing jest --verbose --runInBand --watch"
+    "jest": "cross-env NODE_ENV=testing jest --verbose --runInBand --watch"
   },
   "repository": {
     "type": "git",
