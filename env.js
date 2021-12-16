@@ -10,5 +10,3 @@ module.exports = {
     LOCAL_HOST:'127.0.0.1',
     POSTGRES_PORT:5432,
 }
-
-//DEV_DATABASE_URL='postgresql://postgres:Loganqwaszx23!@localhost:5432/anywherefitness' 
