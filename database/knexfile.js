@@ -4,6 +4,7 @@ const {USERNAME,PASSWORD,DEV_DATABASE,TESTING_DATABASE, LOCAL_HOST, POSTGRES_POR
 const pg = require('pg');
 
 console.log("process.env.DATABASE_URL = ", process.env.DATABASE_URL);
+console.log("process.env.NODE_ENV = ", process.env.NODE_ENV);
 
 if (process.env.DATABASE_URL) {
   pg.defaults.ssl = { rejectUnauthorized: false }
