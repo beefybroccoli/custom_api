@@ -1,14 +1,16 @@
 require("dotenv").config();
 const {USERNAME,PASSWORD,DEV_DATABASE,TESTING_DATABASE, LOCAL_HOST, POSTGRES_PORT} = require("../env");
 
-const postgres = require("pg");
+const pg = require('pg');
+
+console.log("process.env.DATABASE_URL = ", process.env.DATABASE_URL);
 
 if (process.env.DATABASE_URL) {
   pg.defaults.ssl = { rejectUnauthorized: false }
 }
 
 const sharedConfig = {
-  client: 'postgres',
+  client: 'pg',
   version: '8.7.1',
 }
 
@@ -28,7 +30,8 @@ module.exports = {
       port : POSTGRES_PORT,
       user : USERNAME,
       password : PASSWORD,
-      database : DEV_DATABASE
+      database : DEV_DATABASE,
+      ssl: { rejectUnauthorized: false },
     }
   },
 
@@ -54,10 +57,10 @@ module.exports = {
     ...sharedConfig,
     //environment variable on cloud
     migrations:{
-      directory: './database/migrations'
+      directory: './migrations'
     },
     seeds: {
-      directory: './database/seeds'
+      directory: './seeds'
     },
     connection: process.env.DATABASE_URL,
     pool: {
