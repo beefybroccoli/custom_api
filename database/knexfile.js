@@ -58,10 +58,10 @@ module.exports = {
     ...sharedConfig,
     //environment variable on cloud
     migrations:{
-      directory: './database/migrations'
+      directory: './migrations'
     },
     seeds: {
-      directory: './database/seeds'
+      directory: './seeds'
     },
     connection: process.env.DATABASE_URL,
     pool: {
