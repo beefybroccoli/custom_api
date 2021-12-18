@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const knex = require("knex");
 const configs = require("./knexfile");
 
